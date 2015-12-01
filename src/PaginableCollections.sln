@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaginableCollections", "PaginableCollections\PaginableCollections.csproj", "{411AEE2C-9457-48AB-839A-6857128FD2AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaginableCollections.Tests", "PaginableCollections.Tests\PaginableCollections.Tests.csproj", "{2A104303-E4F7-4433-944E-E198C969C473}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{411AEE2C-9457-48AB-839A-6857128FD2AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{411AEE2C-9457-48AB-839A-6857128FD2AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{411AEE2C-9457-48AB-839A-6857128FD2AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{411AEE2C-9457-48AB-839A-6857128FD2AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A104303-E4F7-4433-944E-E198C969C473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A104303-E4F7-4433-944E-E198C969C473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A104303-E4F7-4433-944E-E198C969C473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A104303-E4F7-4433-944E-E198C969C473}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
