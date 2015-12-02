@@ -12,27 +12,33 @@
         public void ShouldEqualPageNumber()
         {
             var source = Enumerable.Range(11, 20);
-            var sut = new StaticPaginable<int>(source, 2, 10, 100);
+            var expectedPageNumber = 2;
 
-            sut.PageNumber.ShouldBeEquivalentTo(2);
+            var sut = new StaticPaginable<int>(source, expectedPageNumber, 10, 100);
+
+            sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
 
         [Test]
         public void ShouldEqualItemCountPerPage()
         {
             var source = Enumerable.Range(11, 20);
-            var sut = new StaticPaginable<int>(source, 2, 10, 100);
+            var expectedItemCountPerPage = 12;
 
-            sut.ItemCountPerPage.ShouldBeEquivalentTo(10);
+            var sut = new StaticPaginable<int>(source, 2, expectedItemCountPerPage, 100);
+
+            sut.ItemCountPerPage.ShouldBeEquivalentTo(expectedItemCountPerPage);
         }
 
         [Test]
         public void ShouldEqualTotalItemCount()
         {
-            var source = Enumerable.Range(11, 20);
-            var sut = new StaticPaginable<int>(source, 2, 10, 100);
+            var expectedTotalItemCount = 25;
+            var source = Enumerable.Range(11, expectedTotalItemCount);
 
-            sut.TotalItemCount.ShouldBeEquivalentTo(100);
+            var sut = new StaticPaginable<int>(source, 2, 10, expectedTotalItemCount);
+
+            sut.TotalItemCount.ShouldBeEquivalentTo(expectedTotalItemCount);
         }
     }
 }
