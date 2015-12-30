@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
 <package >
-  <metadata>
-    <id>PaginableCollections</id>
-    <version>1.0.3</version>
-    <title>PaginableCollections</title>
-    <authors>Nicholas Myers</authors>
-    <projectUrl>http://www.github.com/neekgreen/PaginableCollections</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A light weight pagination framework</description>
-    <tags>pagination collections</tags>
-  </metadata>
-  <files>
-    <file src="bin\Release\PaginableCollections.dll" target="lib\net45\PaginableCollections.dll"/>
-    <file src="bin\Release\PaginableCollections.pdb" target="lib\net45\PaginableCollections.pdb"/>
-  </files>
+    <metadata>
+        <id>PaginableCollections</id>
+        <version>1.0.3</version>
+        <title>PaginableCollections</title>
+        <authors>Nicholas Myers</authors>
+        <projectUrl>http://www.github.com/neekgreen/PaginableCollections</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A light weight pagination framework</description>
+        <tags>pagination collections</tags>
+    </metadata>
+    <files>
+        <file src="bin\Release\PaginableCollections.dll" target="lib\net45\PaginableCollections.dll"/>
+        <file src="bin\Release\PaginableCollections.pdb" target="lib\net45\PaginableCollections.pdb"/>
+        <file src="bin\Release\PaginableCollections.xml" target="lib\net45\PaginableCollections.xml"/>
+    </files>
 </package>
