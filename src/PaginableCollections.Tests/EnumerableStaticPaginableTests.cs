@@ -5,16 +5,16 @@
     using FluentAssertions;
     using NUnit.Framework;
 
-    [TestFixture, Category("EnumerablePaginable")]
-    public class EnumerablePaginableTests
+    [TestFixture, Category("StaticPaginable")]
+    public class EnumerableStaticPaginableTests
     {
         [Test]
         public void ShouldEqualPageNumber()
         {
-            var source = Enumerable.Range(10, 50);
+            var source = Enumerable.Range(11, 20);
             var expectedPageNumber = 2;
 
-            var sut = source.ToPaginable(expectedPageNumber, itemCountPerPage: 10);
+            var sut = source.ToStaticPaginable(expectedPageNumber, 10, 100);
 
             sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
@@ -22,10 +22,10 @@
         [Test]
         public void ShouldEqualItemCountPerPage()
         {
-            var source = Enumerable.Range(11, 100);
+            var source = Enumerable.Range(11, 20);
             var expectedItemCountPerPage = 12;
 
-            var sut = source.ToPaginable(2, expectedItemCountPerPage);
+            var sut = source.ToStaticPaginable(2, expectedItemCountPerPage, 100);
 
             sut.ItemCountPerPage.ShouldBeEquivalentTo(expectedItemCountPerPage);
         }
@@ -36,7 +36,7 @@
             var expectedTotalItemCount = 25;
             var source = Enumerable.Range(11, expectedTotalItemCount);
 
-            var sut = source.ToPaginable(2, 10);
+            var sut = source.ToStaticPaginable(2, 10, expectedTotalItemCount);
 
             sut.TotalItemCount.ShouldBeEquivalentTo(expectedTotalItemCount);
         }
