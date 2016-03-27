@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IPaginable.cs" />
     <Compile Include="QueryableBasedPaginable.cs" />
     <Compile Include="Paginable.cs" />

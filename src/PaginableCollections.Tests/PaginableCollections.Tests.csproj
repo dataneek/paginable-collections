@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumerablePaginableTests.cs" />
     <Compile Include="QueryableBasedPaginableTests.cs" />
     <Compile Include="StaticPaginableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
