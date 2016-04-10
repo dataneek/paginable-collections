@@ -40,7 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="QueryableBasedPaginableTests.cs" />
+    <Compile Include="EnumerableQueryablePaginableTests.cs" />
+    <Compile Include="PaginableInfoTests.cs" />
+    <Compile Include="EnumerableStaticPaginableInfoTests.cs" />
+    <Compile Include="QueryablePaginableInfoTests.cs" />
+    <Compile Include="QueryablePaginableTests.cs" />
+    <Compile Include="EnumerableStaticPaginableTests.cs" />
     <Compile Include="StaticPaginableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
