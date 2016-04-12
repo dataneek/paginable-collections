@@ -1,0 +1,5 @@
+source https://www.nuget.org/api/v2/
+framework >= net45
+nuget FluentAssertions 4.1.0
+nuget NUnit 2.6.4
+nuget NUnitTestAdapter 2.0.0
