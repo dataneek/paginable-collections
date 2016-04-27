@@ -6,7 +6,7 @@
     using NUnit.Framework;
 
     [TestFixture, Category("EmptyPaginable")]
-    public class EmptyQueryablePaginableTests
+    public class EmptyPaginableTests
     {
         [Test]
         public void ShouldEqualPageNumber()
