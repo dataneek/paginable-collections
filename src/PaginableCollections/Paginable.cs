@@ -91,4 +91,20 @@
         /// </summary>
         public bool HasNextPage { get { return PageNumber < TotalPageCount; } }
     }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static class Paginable
+    {
+        /// <summary>
+        /// Returns new empty paginable collection.
+        /// </summary>
+        /// <returns></returns>
+        public static IPaginable<T> Empty<T>()
+        {
+            return new EmptyPaginable<T>();
+        }
+    }
 }

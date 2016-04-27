@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmptyPaginable.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IPaginable.cs" />
     <Compile Include="IPaginableInfo.cs" />
