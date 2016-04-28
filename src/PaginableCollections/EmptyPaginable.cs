@@ -1,7 +1,6 @@
 ﻿namespace PaginableCollections
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -10,11 +9,13 @@
     /// <typeparam name="T"></typeparam>
     public class EmptyPaginable<T> : StaticPaginable<T>
     {
+        public const int DefaultItemCountPerPage = 10;
+
         /// <summary>
         /// Create new empty paginable collection.
         /// </summary>
         public EmptyPaginable()
-            : base(Enumerable.Empty<T>(), 1, 0, 0)
+            : base(Enumerable.Empty<T>(), 1, DefaultItemCountPerPage, 0)
         {
         }
     }

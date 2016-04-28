@@ -20,7 +20,7 @@
         [Test]
         public void ShouldEqualItemCountPerPage()
         {
-            var expectedItemCountPerPage = 0;
+            var expectedItemCountPerPage = EmptyPaginable<int>.DefaultItemCountPerPage;
             var sut = Paginable.Empty<int>();
 
             sut.ItemCountPerPage.ShouldBeEquivalentTo(expectedItemCountPerPage);
