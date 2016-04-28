@@ -12,3 +12,4 @@
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("2.0.*")]
+[assembly: AssemblyInformationalVersion("1.1.0")]

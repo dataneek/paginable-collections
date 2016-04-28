@@ -2,13 +2,13 @@
 <package>
     <metadata>
         <id>PaginableCollections</id>
-        <version>1.0.5</version>
+        <version>1.1.0</version>
         <title>PaginableCollections</title>
         <authors>Nicholas Myers</authors>
         <projectUrl>http://www.github.com/neekgreen/PaginableCollections</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>A light weight pagination framework</description>
-        <tags>pagination collections</tags>
+        <tags>pagination collections paginable page</tags>
     </metadata>
     <files>
         <file src="bin\Release\PaginableCollections.dll" target="lib\net45\PaginableCollections.dll"/>
