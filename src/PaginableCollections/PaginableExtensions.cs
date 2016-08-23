@@ -22,6 +22,7 @@
         /// Convert queryable to paginable.
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="queryable"></param>
         /// <param name="paginableInfo"></param>
         /// <returns></returns>
         public static IPaginable<T> ToPaginable<T>(this IQueryable<T> queryable, IPaginableInfo paginableInfo)
