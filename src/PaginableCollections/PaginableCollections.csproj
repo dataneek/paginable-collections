@@ -10,8 +10,10 @@
     <RootNamespace>PaginableCollections</RootNamespace>
     <AssemblyName>PaginableCollections</AssemblyName>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile328</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,10 +35,6 @@
     <DocumentationFile>bin\Release\PaginableCollections.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="EmptyPaginable.cs" />
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="IPaginable.cs" />
@@ -52,6 +50,7 @@
     <None Include="PaginableCollections.nuspec">
       <SubType>Designer</SubType>
     </None>
+    <None Include="project.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
