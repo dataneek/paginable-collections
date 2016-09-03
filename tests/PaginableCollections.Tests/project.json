@@ -10,6 +10,5 @@
     "testRunner": "nunit",
     "frameworks": {
         "net451": {}
-
     }
 }
