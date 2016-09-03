@@ -1,0 +1,24 @@
+﻿{
+    "version": "2.0.0",
+    "authors": [ "Nicholas Myers" ],
+    "copyright": "Copyright Nicholas Myers",
+    "description": "A light weight pagination framework",
+    "packOptions": {
+        "tags": [ "paginable", "page", "paging", "queryable", "collections", "paginablecollections" ],
+        "projectUrl": "https://github.com/neekgreen/PaginableCollections",
+        "repository": {
+            "type": "git",
+            "url": "git://github.com/neekgreen/paginablecollections"
+        }
+    },
+
+    "frameworks": {
+        "net45": {},
+        "netstandard1.3": {
+            "dependencies": {
+                "NETStandard.Library": "1.6.0",
+                "System.Linq.Queryable": "4.0.1"
+            }
+        }
+    }
+}

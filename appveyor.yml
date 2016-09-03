@@ -1,0 +1,29 @@
+version: '{build}'  
+pull_requests:  
+  do_not_increment_build_number: true
+branches:  
+  only:
+  - master
+nuget:  
+  disable_publish_on_pr: true
+build_script:  
+- ps: .\build.ps1
+test: off  
+artifacts:  
+- path: .\artifacts\**\*.nupkg
+  name: NuGet
+deploy:  
+- provider: NuGet
+  server: https://www.myget.org/F/neekgreen/api/v2
+  api_key:
+    secure: F+HOhtceWDrA8csKd3erzdsHZQDTiZyuZu1GxUF9cn6lQCi57c1A1Spz61jY6jMb
+  skip_symbols: true
+  on:
+    branch: master
+- provider: NuGet
+  name: production
+  api_key:
+    secure: LETsd+PTuBvLDx2FdbTtP/gbsYonG2uh/gT7BVG2ZNU1RZBZ7UNJ/uXlpB5/ztKv
+  on:
+    branch: master
+    appveyor_repo_tag: true
