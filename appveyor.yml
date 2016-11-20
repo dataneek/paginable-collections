@@ -17,7 +17,7 @@ deploy:
   server: https://www.myget.org/F/neekgreen/api/v2
   api_key:
     secure: F+HOhtceWDrA8csKd3erzdsHZQDTiZyuZu1GxUF9cn6lQCi57c1A1Spz61jY6jMb
-  skip_symbols: false
+  skip_symbols: true
   on:
     branch: master
 - provider: NuGet
