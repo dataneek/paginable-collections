@@ -1,14 +1,12 @@
-﻿namespace PaginableCollections.Tests
+﻿namespace PaginableCollections.Facts
 {
-    using System;
     using System.Linq;
     using FluentAssertions;
-    using NUnit.Framework;
+    using Xunit;
 
-    [TestFixture, Category("StaticPaginable")]
-    public class StaticPaginableTests
+    public class StaticPaginableFacts
     {
-        [Test]
+        [Fact]
         public void ShouldEqualPageNumber()
         {
             var source = Enumerable.Range(11, 20);
@@ -19,7 +17,7 @@
             sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualItemCountPerPage()
         {
             var source = Enumerable.Range(11, 20);
@@ -30,7 +28,7 @@
             sut.ItemCountPerPage.ShouldBeEquivalentTo(expectedItemCountPerPage);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualTotalItemCount()
         {
             var expectedTotalItemCount = 25;
@@ -41,7 +39,7 @@
             sut.TotalItemCount.ShouldBeEquivalentTo(expectedTotalItemCount);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualFirstElementNextPage()
         {
             var source = Enumerable.Range(1, 100);
