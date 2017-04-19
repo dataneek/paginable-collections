@@ -1,12 +1,11 @@
 ﻿namespace PaginableCollections.Tests
 {
     using FluentAssertions;
-    using NUnit.Framework;
+    using Xunit;
 
-    [TestFixture, Category("PaginableRequest")]
     public class PaginableRequestTests
     {
-        [Test]
+        [Fact]
         public void ShouldEqualPageNumber()
         {
             var expectedPageNumber = 2;
@@ -15,7 +14,7 @@
             sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualItemCountPerPage()
         {
             var expectedItemCountPerPage = 12;

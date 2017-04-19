@@ -1,12 +1,11 @@
-﻿namespace PaginableCollections.Tests
+﻿namespace PaginableCollections.Facts
 {
     using FluentAssertions;
-    using NUnit.Framework;
+    using Xunit;
 
-    [TestFixture]
-    public class StaticPagerPageTests
+    public class StaticPagerPageFacts
     {
-        [Test]
+        [Fact]
         public void ShouldSetPageNumber()
         {
             var pageNumber = 1;
@@ -15,7 +14,7 @@
             sut.PageNumber.ShouldBeEquivalentTo(pageNumber);
         }
 
-        [Test]
+        [Fact]
         public void ShouldSetIsFirstPage()
         {
             var pageNumber = 1;
@@ -24,7 +23,7 @@
             sut.IsFirstPage.ShouldBeEquivalentTo(true);
         }
 
-        [Test]
+        [Fact]
         public void ShouldSetIsPreviousPage()
         {
             var pageNumber = 1;
@@ -33,7 +32,7 @@
             sut.HasPreviousPage.ShouldBeEquivalentTo(false);
         }
 
-        [Test]
+        [Fact]
         public void ShouldSetHasNextPage()
         {
             var pageNumber = 1;
@@ -42,7 +41,7 @@
             sut.HasNextPage.ShouldBeEquivalentTo(true);
         }
 
-        [Test]
+        [Fact]
         public void ShouldSetTotalPageCount()
         {
             var totalPageCount = 1;
@@ -51,7 +50,7 @@
             sut.TotalPageCount.ShouldBeEquivalentTo(totalPageCount);
         }
 
-        [Test]
+        [Fact]
         public void ShouldBeLastPage()
         {
             var totalPageCount = 10;
@@ -60,7 +59,7 @@
             sut.IsLastPage.ShouldBeEquivalentTo(true);
         }
 
-        [Test]
+        [Fact]
         public void ShouldBeHasNextPage()
         {
             var totalPageCount = 10;
