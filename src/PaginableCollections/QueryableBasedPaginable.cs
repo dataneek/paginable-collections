@@ -34,8 +34,16 @@
                         ? queryable.Skip(0).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage)
                         : queryable.Skip((pageNumber - 1) * ItemCountPerPage).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage));
 
-            this.FirstItemNumber = innerList.First().ItemNumber;
-            this.LastItemNumber = innerList.Last().ItemNumber;
+            if (innerList.Any())
+            {
+                this.FirstItemNumber = innerList.First().ItemNumber;
+                this.LastItemNumber = innerList.Last().ItemNumber;
+            }
+            else
+            {
+                this.FirstItemNumber = 0;
+                this.LastItemNumber = 0;
+            }
         }
 
         /// <summary>
@@ -46,24 +54,5 @@
         /// <param name="itemCountPerPage"></param>
         public QueryableBasedPaginable(IEnumerable<T> superset, int pageNumber, int itemCountPerPage)
             : this(superset.AsQueryable(), pageNumber, itemCountPerPage) { }
-    }
-
-
-
-
-
-    public static class Something
-    {
-        public static IEnumerable<IPaginableItem<T>> ToPaginableItemList<T>(this IEnumerable<T> t, int pageNumber, int itemCountPerPage)
-        {
-            var offset = (pageNumber - 1) * itemCountPerPage;
-            var list = t.ToList();
-
-            for (var i = 0; i < t.Count(); i++)
-            {
-                yield return new PaginableItem<T>(list[i], offset + 1);
-                offset++;
-            }
-        }
     }
 }
