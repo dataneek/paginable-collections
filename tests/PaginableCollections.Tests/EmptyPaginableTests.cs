@@ -1,7 +1,5 @@
 ﻿namespace PaginableCollections.Tests
 {
-    using System;
-    using System.Linq;
     using FluentAssertions;
     using NUnit.Framework;
 

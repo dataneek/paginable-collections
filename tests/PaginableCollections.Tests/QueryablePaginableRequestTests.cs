@@ -5,15 +5,15 @@
     using FluentAssertions;
     using NUnit.Framework;
 
-    [TestFixture, Category("PaginableInfo")]
-    public class QueryablePaginableInfoTests
+    [TestFixture, Category("PaginableRequest")]
+    public class QueryablePaginableRequestTests
     {
         [Test]
         public void ShouldEqualPageNumber()
         {
             var source = Enumerable.Range(10, 50).AsQueryable();
             var expectedPageNumber = 2;
-            var paginableInfo = new PaginableInfo(expectedPageNumber, 10);
+            var paginableInfo = new PaginableRequest(expectedPageNumber, 10);
 
             var sut = source.ToPaginable(paginableInfo);
 
@@ -25,7 +25,7 @@
         {
             var source = Enumerable.Range(11, 100).AsQueryable();
             var expectedItemCountPerPage = 12;
-            var paginableInfo = new PaginableInfo(2, expectedItemCountPerPage);
+            var paginableInfo = new PaginableRequest(2, expectedItemCountPerPage);
 
             var sut = source.ToPaginable(paginableInfo);
 
