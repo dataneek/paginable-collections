@@ -14,7 +14,7 @@
             var source = Enumerable.Range(11, 20);
             var expectedPageNumber = 2;
 
-            var sut = new StaticPaginable<int>(source, expectedPageNumber, 10, 100);
+            IPaginable<int> sut = new StaticPaginable<int>(source, expectedPageNumber, 10, 100);
 
             sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
@@ -39,6 +39,18 @@
             var sut = new StaticPaginable<int>(source, 2, 10, expectedTotalItemCount);
 
             sut.TotalItemCount.ShouldBeEquivalentTo(expectedTotalItemCount);
+        }
+
+        [Test]
+        public void ShouldEqualFirstElementNextPage()
+        {
+            var source = Enumerable.Range(1, 100);
+            var paginable = new StaticPaginable<int>(source, 3, 10, 100);
+
+            var sut = paginable.ElementAt(0);
+
+            sut.ItemNumber.ShouldBeEquivalentTo(21);
+            sut.Item.ShouldBeEquivalentTo(1);
         }
     }
 }

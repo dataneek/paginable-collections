@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
 
-    public interface IPaginableInfo
+    public interface IPaginableRequest
     {
         int PageNumber { get; }
         int ItemCountPerPage { get; }

@@ -20,16 +20,30 @@
         public StaticPaginable(IEnumerable<T> subset, int pageNumber, int itemCountPerPage, int totalItemCount)
         {
             if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException("pageNumber");
+                throw new ArgumentOutOfRangeException(nameof(pageNumber));
 
             if (itemCountPerPage < 1)
-                throw new ArgumentOutOfRangeException("itemCountPerPage");
+                throw new ArgumentOutOfRangeException(nameof(itemCountPerPage));
+
+            if (subset.Count() > totalItemCount)
+                throw new ArgumentOutOfRangeException(nameof(totalItemCount));
 
             this.TotalItemCount = totalItemCount;
             this.PageNumber = pageNumber;
             this.ItemCountPerPage = itemCountPerPage;
 
-            this.innerList.AddRange(subset);
+            this.innerList.AddRange(subset.ToPaginableItemList(pageNumber, itemCountPerPage));
+
+            if (innerList.Any())
+            {
+                this.FirstItemNumber = innerList.First().ItemNumber;
+                this.LastItemNumber = innerList.Last().ItemNumber;
+            }
+            else
+            {
+                this.FirstItemNumber = 0;
+                this.LastItemNumber = 0;
+            }
         }
     }
 }

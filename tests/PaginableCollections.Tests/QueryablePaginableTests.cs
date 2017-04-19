@@ -1,6 +1,5 @@
 ﻿namespace PaginableCollections.Tests
 {
-    using System;
     using System.Linq;
     using FluentAssertions;
     using NUnit.Framework;
@@ -39,6 +38,18 @@
             var sut = new QueryableBasedPaginable<int>(source, 2, 10);
 
             sut.TotalItemCount.ShouldBeEquivalentTo(expectedTotalItemCount);
+        }
+
+        [Test]
+        public void ShouldEqualFirstElementNextPage()
+        {
+            var source = Enumerable.Range(1, 100).AsQueryable();
+            var paginable = new QueryableBasedPaginable<int>(source, 3, 10);
+
+            var sut = paginable.ElementAt(0);
+
+            sut.ItemNumber.ShouldBeEquivalentTo(21);
+            sut.Item.ShouldBeEquivalentTo(21);
         }
     }
 }

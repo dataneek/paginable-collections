@@ -19,10 +19,10 @@
         public QueryableBasedPaginable(IQueryable<T> queryable, int pageNumber, int itemCountPerPage)
         {
             if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException("pageNumber");
+                throw new ArgumentOutOfRangeException(nameof(pageNumber));
 
             if (itemCountPerPage < 1)
-                throw new ArgumentOutOfRangeException("itemCountPerPage");
+                throw new ArgumentOutOfRangeException(nameof(ItemCountPerPage));
 
             this.TotalItemCount = queryable == null ? 0 : queryable.Count();
             this.PageNumber = pageNumber;
@@ -31,8 +31,11 @@
             if (queryable != null && TotalItemCount > 0)
                 innerList.AddRange(
                     pageNumber == 1
-                        ? queryable.Skip(0).Take(ItemCountPerPage).ToList()
-                        : queryable.Skip((pageNumber - 1) * ItemCountPerPage).Take(ItemCountPerPage).ToList());
+                        ? queryable.Skip(0).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage)
+                        : queryable.Skip((pageNumber - 1) * ItemCountPerPage).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage));
+
+            this.FirstItemNumber = innerList.First().ItemNumber;
+            this.LastItemNumber = innerList.Last().ItemNumber;
         }
 
         /// <summary>
@@ -43,5 +46,24 @@
         /// <param name="itemCountPerPage"></param>
         public QueryableBasedPaginable(IEnumerable<T> superset, int pageNumber, int itemCountPerPage)
             : this(superset.AsQueryable(), pageNumber, itemCountPerPage) { }
+    }
+
+
+
+
+
+    public static class Something
+    {
+        public static IEnumerable<IPaginableItem<T>> ToPaginableItemList<T>(this IEnumerable<T> t, int pageNumber, int itemCountPerPage)
+        {
+            var offset = (pageNumber - 1) * itemCountPerPage;
+            var list = t.ToList();
+
+            for (var i = 0; i < t.Count(); i++)
+            {
+                yield return new PaginableItem<T>(list[i], offset + 1);
+                offset++;
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Base class represents page of items.
@@ -10,22 +11,18 @@
     /// <typeparam name="T">The type of items in this paginable.</typeparam>
     public abstract class Paginable<T> : IPaginable<T>
     {
-        protected readonly List<T> innerList = new List<T>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerator<T> GetEnumerator()
-        {
-            return innerList.GetEnumerator();
-        }
+        protected readonly List<IPaginableItem<T>> innerList = new List<IPaginableItem<T>>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
+        {
+            return innerList.GetEnumerator();
+        }
+
+        IEnumerator<IPaginableItem<T>> IEnumerable<IPaginableItem<T>>.GetEnumerator()
         {
             return innerList.GetEnumerator();
         }
@@ -50,46 +47,48 @@
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public T this[int index] { get { return innerList[index]; } }
+        IPaginableItem<T> IPaginable<T>.this[int index] => innerList[index];
 
         /// <summary>
         /// Number of items in this result set.
         /// </summary>
-        public int Count { get { return innerList.Count; } }
+        public int Count => innerList.Count;
 
         /// <summary>
         /// Total number of pages.
         /// </summary>
-        public int TotalPageCount
-        {
-            get
-            {
-                return
-                    TotalItemCount > 0
-                        ? (int)Math.Ceiling(TotalItemCount / (double)this.ItemCountPerPage)
-                        : 0;
-            }
-        }
+        public int TotalPageCount =>
+            TotalItemCount > 0 ? (int)Math.Ceiling(TotalItemCount / (double)this.ItemCountPerPage) : 0;
 
         /// <summary>
         /// Identifies the first page.
         /// </summary>
-        public bool IsFirstPage { get { return PageNumber == 1; } }
+        public bool IsFirstPage => PageNumber == 1;
 
         /// <summary>
         /// Identifies the last page.
         /// </summary>
-        public bool IsLastPage { get { return PageNumber >= TotalPageCount; } }
+        public bool IsLastPage => PageNumber >= TotalPageCount;
 
         /// <summary>
         /// Identifies if a previous page is available.
         /// </summary>
-        public bool HasPreviousPage { get { return PageNumber > 1; } }
+        public bool HasPreviousPage => PageNumber > 1;
 
         /// <summary>
         /// Identifies if a next page is available.
         /// </summary>
-        public bool HasNextPage { get { return PageNumber < TotalPageCount; } }
+        public bool HasNextPage => PageNumber < TotalPageCount;
+
+        /// <summary>
+        /// Identifies the first item number of the page.
+        /// </summary>
+        public int FirstItemNumber { get; protected set; }
+
+        /// <summary>
+        /// Identifies the last item number of the page.
+        /// </summary>
+        public int LastItemNumber { get; protected set; }
     }
 
 
