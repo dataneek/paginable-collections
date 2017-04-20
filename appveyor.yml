@@ -4,14 +4,14 @@ pull_requests:
 branches:  
   only:
   - master
+image: Visual Studio 2017
+install:
+  - set PATH=C:\Program Files (x86)\MSBuild\15.0\Bin;%PATH%
 nuget:  
   disable_publish_on_pr: true
 build_script:  
 - ps: .\build.ps1
 test: off  
-artifacts:  
-- path: .\artifacts\**\*.nupkg
-  name: NuGet
 deploy:  
 - provider: NuGet
   server: https://www.myget.org/F/neekgreen/api/v2
@@ -19,7 +19,7 @@ deploy:
     secure: F+HOhtceWDrA8csKd3erzdsHZQDTiZyuZu1GxUF9cn6lQCi57c1A1Spz61jY6jMb
   skip_symbols: true
   on:
-    branch: master
+    branch: staging
 - provider: NuGet
   name: production
   api_key:

@@ -1,14 +1,12 @@
 ﻿namespace PaginableCollections.Tests
 {
-    using System;
     using System.Linq;
     using FluentAssertions;
-    using NUnit.Framework;
+    using Xunit;
 
-    [TestFixture, Category("QueryablePaginable")]
     public class EnumerableQueryablePaginableTests
     {
-        [Test]
+        [Fact]
         public void ShouldEqualPageNumber()
         {
             var source = Enumerable.Range(10, 50);
@@ -19,7 +17,7 @@
             sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualItemCountPerPage()
         {
             var source = Enumerable.Range(11, 100);
@@ -30,7 +28,7 @@
             sut.ItemCountPerPage.ShouldBeEquivalentTo(expectedItemCountPerPage);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualTotalItemCount()
         {
             var expectedTotalItemCount = 25;

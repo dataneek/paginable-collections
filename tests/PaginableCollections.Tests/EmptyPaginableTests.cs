@@ -1,14 +1,11 @@
 ﻿namespace PaginableCollections.Tests
 {
-    using System;
-    using System.Linq;
     using FluentAssertions;
-    using NUnit.Framework;
+    using Xunit;
 
-    [TestFixture, Category("EmptyPaginable")]
     public class EmptyPaginableTests
     {
-        [Test]
+        [Fact]
         public void ShouldEqualPageNumber()
         {
             var expectedPageNumber = 1;
@@ -17,7 +14,7 @@
             sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualItemCountPerPage()
         {
             var expectedItemCountPerPage = EmptyPaginable<int>.DefaultItemCountPerPage;
@@ -26,7 +23,7 @@
             sut.ItemCountPerPage.ShouldBeEquivalentTo(expectedItemCountPerPage);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualTotalItemCount()
         {
             var expectedTotalItemCount = 0;
