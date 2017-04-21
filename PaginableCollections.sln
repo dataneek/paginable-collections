@@ -1,13 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B15992BA-EB0A-4096-BA64-A7E1B7F6FA32}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{50BAA0E6-841D-4678-9679-38A2A3456F60}"
 	ProjectSection(SolutionItems) = preProject
-		build.ps1 = build.ps1
+		appveyor.yml = appveyor.yml
+		build.cake = build.cake
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaginableCollections", "src\PaginableCollections\PaginableCollections.csproj", "{8F6C7555-710F-443F-A5CA-BF50FC37484D}"

@@ -1,68 +1,89 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
-//////////////////////////////////////////////////////////////////////
-// ARGUMENTS
-//////////////////////////////////////////////////////////////////////
+//#addin nuget:?package=Cake.AppVeyor
 
-var target = Argument("target", "Default");
-var configuration = Argument("configuration", "Release");
+var target = Argument("Target", "Default");
 
-//////////////////////////////////////////////////////////////////////
-// PREPARATION
-//////////////////////////////////////////////////////////////////////
+// Configuration - The build configuration (Debug/Release) to use.
+// 1. If command line parameter parameter passed, use that.
+// 2. Otherwise if an Environment variable exists, use that.
+var configuration = "Release";
+   // HasArgument("Configuration") ? Argument("Configuration") :
+    //EnvironmentVariable("Configuration") != null ? EnvironmentVariable("BuildNumber") : "Release";
 
-// Define directories.
-var buildDir = Directory("./src/PaginableCollections/bin") + Directory(configuration);
-var outputDir = Directory("./artifacts");
 
-var buildSettings = new DotNetCoreBuildSettings
-     {
-         Framework = "netcoreapp1.1",
-         Configuration = "Release",
-         OutputDirectory = buildDir
-     };
+var buildNumber =
+    HasArgument("BuildNumber") ? Argument<int>("BuildNumber") :
+    AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
+    EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) : 1;
 
-//////////////////////////////////////////////////////////////////////
-// TASKS
-//////////////////////////////////////////////////////////////////////
+var artifactsDirectory = Directory("./artifacts");
 
 Task("Clean")
     .Does(() =>
-{
-    CleanDirectory(buildDir);
-});
+    {
+        CleanDirectory(artifactsDirectory);
+    });
 
-Task("Restore-NuGet-Packages")
+Task("Restore")
     .IsDependentOn("Clean")
     .Does(() =>
-{
-    DotNetCoreRestore("./PaginableCollections.sln");
-});
+    {
+        DotNetCoreRestore();
+    });
 
 Task("Build")
-    .IsDependentOn("Restore-NuGet-Packages")
+    .IsDependentOn("Restore")
     .Does(() =>
-{
-DotNetCoreBuild("./src/PaginableCollections/PaginableCollections.csproj");
-});
+    {
+        var projects = GetFiles("./**/*.csproj");
+        foreach(var project in projects)
+        {
+            DotNetCoreBuild(
+                project.GetDirectory().FullPath,
+                new DotNetCoreBuildSettings()
+                {
+                    Configuration = configuration
+                });
+        }
+    });
 
-Task("Run-Unit-Tests")
+Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
-{
-    NUnit3("./tests/**/bin/" + configuration + "/**/*.Tests.dll", new NUnit3Settings {
-        NoResults = true
-        });
-});
+    {
+        var projects = GetFiles("./tests/**/*.csproj");
+        foreach(var project in projects)
+        {
+            DotNetCoreTest(
+                project.FullPath,
+                new DotNetCoreTestSettings()
+                {
+                    Configuration = configuration,
+                    NoBuild = true
+                });
+        }
+    });
 
-//////////////////////////////////////////////////////////////////////
-// TASK TARGETS
-//////////////////////////////////////////////////////////////////////
+Task("Pack")
+    .IsDependentOn("Test")
+    .Does(() =>
+    {
+		var projects = GetFiles("./src/**/*.csproj");
+        foreach (var project in projects)
+        {
+            DotNetCorePack(
+                project.GetDirectory().FullPath,
+                new DotNetCorePackSettings()
+                {
+                    Configuration = configuration,
+                    OutputDirectory = artifactsDirectory,
+                });
+        }
+    });
+
 
 Task("Default")
-    .IsDependentOn("Run-Unit-Tests");
+    .IsDependentOn("Pack");
 
-//////////////////////////////////////////////////////////////////////
-// EXECUTION
-//////////////////////////////////////////////////////////////////////
+
 
 RunTarget(target);

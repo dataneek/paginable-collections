@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>A light weight pagination framework</Description>
     <Copyright>Copyright Nicholas Myers</Copyright>
-    <VersionPrefix>2.0.1</VersionPrefix>
+    <VersionPrefix>3.0.0</VersionPrefix>
     <Authors>Nicholas Myers</Authors>
     <TargetFrameworks>net45;netstandard1.3</TargetFrameworks>
     <AssemblyName>PaginableCollections</AssemblyName>
@@ -22,6 +22,11 @@
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
