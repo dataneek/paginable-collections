@@ -1,12 +1,3 @@
-﻿using System.Reflection;
+﻿using System;
 
-[assembly: AssemblyTitle("PaginableCollections")]
-[assembly: AssemblyDescription("A light weight pagination framework.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("PaginableCollections")]
-[assembly: AssemblyProduct("PaginableCollections")]
-[assembly: AssemblyCopyright("Copyright © 2017")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("3.0.0")]
-[assembly: AssemblyInformationalVersion("3.0.0")]
+[assembly: CLSCompliant(true)]

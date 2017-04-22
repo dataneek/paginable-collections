@@ -50,7 +50,7 @@
         /// <param name="pageNumber"></param>
         /// <param name="itemCountPerPage"></param>
         /// <returns></returns>
-        public static IEnumerable<IPaginableItem<T>> ToPaginableItemList<T>(this IEnumerable<T> t, int pageNumber, int itemCountPerPage)
+        internal static IEnumerable<IPaginableItem<T>> ToPaginableItemList<T>(this IEnumerable<T> t, int pageNumber, int itemCountPerPage)
         {
             var offset = (pageNumber - 1) * itemCountPerPage;
             var list = t.ToList();
