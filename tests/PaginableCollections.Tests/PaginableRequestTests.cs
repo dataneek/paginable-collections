@@ -1,27 +1,24 @@
 ﻿namespace PaginableCollections.Tests
 {
-    using System;
-    using System.Linq;
     using FluentAssertions;
-    using NUnit.Framework;
+    using Xunit;
 
-    [TestFixture, Category("PaginableInfo")]
-    public class PaginableInfoTests
+    public class PaginableRequestTests
     {
-        [Test]
+        [Fact]
         public void ShouldEqualPageNumber()
         {
             var expectedPageNumber = 2;
-            var sut = new PaginableInfo(expectedPageNumber, 10);
+            var sut = new PaginableRequest(expectedPageNumber, 10);
 
             sut.PageNumber.ShouldBeEquivalentTo(expectedPageNumber);
         }
 
-        [Test]
+        [Fact]
         public void ShouldEqualItemCountPerPage()
         {
             var expectedItemCountPerPage = 12;
-            var sut = new PaginableInfo(2, expectedItemCountPerPage);
+            var sut = new PaginableRequest(2, expectedItemCountPerPage);
 
             sut.ItemCountPerPage.ShouldBeEquivalentTo(expectedItemCountPerPage);
         }

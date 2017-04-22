@@ -3,9 +3,9 @@
     using System;
     using System.Linq;
 
-    public class PaginableInfo : IPaginableInfo 
+    public class PaginableRequest : IPaginableRequest 
     {
-        public PaginableInfo(int pageNumber, int itemCountPerPage)
+        public PaginableRequest(int pageNumber, int itemCountPerPage)
         {
             this.PageNumber = pageNumber;
             this.ItemCountPerPage = itemCountPerPage;

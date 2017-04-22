@@ -19,10 +19,10 @@
         public QueryableBasedPaginable(IQueryable<T> queryable, int pageNumber, int itemCountPerPage)
         {
             if (pageNumber < 1)
-                throw new ArgumentOutOfRangeException("pageNumber");
+                throw new ArgumentOutOfRangeException(nameof(pageNumber));
 
             if (itemCountPerPage < 1)
-                throw new ArgumentOutOfRangeException("itemCountPerPage");
+                throw new ArgumentOutOfRangeException(nameof(ItemCountPerPage));
 
             this.TotalItemCount = queryable == null ? 0 : queryable.Count();
             this.PageNumber = pageNumber;
@@ -31,8 +31,19 @@
             if (queryable != null && TotalItemCount > 0)
                 innerList.AddRange(
                     pageNumber == 1
-                        ? queryable.Skip(0).Take(ItemCountPerPage).ToList()
-                        : queryable.Skip((pageNumber - 1) * ItemCountPerPage).Take(ItemCountPerPage).ToList());
+                        ? queryable.Skip(0).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage)
+                        : queryable.Skip((pageNumber - 1) * ItemCountPerPage).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage));
+
+            if (innerList.Any())
+            {
+                this.FirstItemNumber = innerList.First().ItemNumber;
+                this.LastItemNumber = innerList.Last().ItemNumber;
+            }
+            else
+            {
+                this.FirstItemNumber = 0;
+                this.LastItemNumber = 0;
+            }
         }
 
         /// <summary>
