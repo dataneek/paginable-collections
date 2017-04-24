@@ -1,19 +1,22 @@
-//#addin nuget:?package=Cake.AppVeyor
+#addin nuget:?package=Cake.Incubator
+#addin nuget:?package=Cake.AppVeyor
+
+
 
 var target = Argument("Target", "Default");
 
-// Configuration - The build configuration (Debug/Release) to use.
-// 1. If command line parameter parameter passed, use that.
-// 2. Otherwise if an Environment variable exists, use that.
-var configuration = "Release";
-   // HasArgument("Configuration") ? Argument("Configuration") :
-    //EnvironmentVariable("Configuration") != null ? EnvironmentVariable("BuildNumber") : "Release";
-
+var configuration =
+    HasArgument("Configuration") ? Argument<string>("Configuration") : 
+	HasEnvironmentVariable("Configuration") ? EnvironmentVariable<string>("Configuration") : "Release";
 
 var buildNumber =
     HasArgument("BuildNumber") ? Argument<int>("BuildNumber") :
     AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
-    EnvironmentVariable("BuildNumber") != null ? int.Parse(EnvironmentVariable("BuildNumber")) : 1;
+    HasEnvironmentVariable("BuildNumber") ? EnvironmentVariable<int>("BuildNumber") : 0;
+
+
+Information(string.Format("Configuration: {0}", configuration));
+Information(string.Format("Build Number: {0}", buildNumber));
 
 var artifactsDirectory = Directory("./artifacts");
 
@@ -38,7 +41,7 @@ Task("Build")
         foreach(var project in projects)
         {
             DotNetCoreBuild(
-                project.GetDirectory().FullPath,
+                project.FullPath,
                 new DotNetCoreBuildSettings()
                 {
                     Configuration = configuration
@@ -71,7 +74,7 @@ Task("Pack")
         foreach (var project in projects)
         {
             DotNetCorePack(
-                project.GetDirectory().FullPath,
+                project.FullPath,
                 new DotNetCorePackSettings()
                 {
                     Configuration = configuration,
@@ -82,8 +85,7 @@ Task("Pack")
 
 
 Task("Default")
-    .IsDependentOn("Pack");
-
+	.IsDependentOn("Pack");
 
 
 RunTarget(target);
