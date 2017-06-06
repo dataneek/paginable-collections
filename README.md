@@ -13,3 +13,28 @@ You should install [PaginableCollections with NuGet](https://www.nuget.org/packa
     Install-Package PaginableCollections
     
 This command will download and install PaginableCollections. Let me know if you have questions!
+
+
+## TD;DR
+
+```csharp
+
+var numbers = new int[] { 2, 4, 5, 1, 6, 8, 2, 0, 4, 3, 4, 1, 5, 9, 7, 0, 2, 4, 8, 9 };
+
+var pageNumber = 2;
+var itemCountPerPage = 6;
+
+var paginable = numbers.ToPaginable(pageNumber, itemCountPerPage);
+
+foreach(var t in paginable)
+{
+    Console.WriteLine($"{t.ItemNumber}, {t.Item}");
+}
+
+//output
+1, 2
+2, 0
+3, 4
+4, 3
+5, 4 
+6, 1
