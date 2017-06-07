@@ -2,7 +2,7 @@ namespace PaginableCollections
 {
     using System.Collections.Generic;
 
-	public class StaticPager : IPager
+    public class StaticPager : IPager
     {
         private readonly IList<IPagerItem> pages;
 

@@ -1,6 +1,6 @@
 ﻿namespace PaginableCollections
 {
-	public class PaginableRequest : IPaginableRequest 
+    public class PaginableRequest : IPaginableRequest 
     {
         public PaginableRequest(int pageNumber, int itemCountPerPage)
         {

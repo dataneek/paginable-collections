@@ -1,6 +1,6 @@
 ﻿namespace PaginableCollections
 {
-	public interface IPaginableRequest
+    public interface IPaginableRequest
     {
         int PageNumber { get; }
         int ItemCountPerPage { get; }

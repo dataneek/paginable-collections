@@ -25,8 +25,8 @@
             if (itemCountPerPage < 1)
                 throw new ArgumentOutOfRangeException(nameof(itemCountPerPage));
 
-	        var list = subset as IList<T> ?? subset.ToList();
-	        if (list.Count > totalItemCount)
+            var list = subset as IList<T> ?? subset.ToList();
+            if (list.Count > totalItemCount)
                 throw new ArgumentOutOfRangeException(nameof(totalItemCount));
 
             TotalItemCount = totalItemCount;
