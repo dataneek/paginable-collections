@@ -1,7 +1,6 @@
 ﻿namespace PaginableCollections
 {
-    using System;
-    using System.Linq;
+	using System.Linq;
 
     /// <summary>
     /// Represents an empty paginable collection.

@@ -3,9 +3,8 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
 
-    /// <summary>
+	/// <summary>
     /// Base class represents page of items.
     /// </summary>
     /// <typeparam name="T">The type of items in this paginable.</typeparam>
