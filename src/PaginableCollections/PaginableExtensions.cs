@@ -52,9 +52,8 @@
         internal static IEnumerable<IPaginableItem<T>> ToPaginableItemList<T>(this IEnumerable<T> t, int pageNumber, int itemCountPerPage)
         {
             var offset = (pageNumber - 1) * itemCountPerPage;
-            var list = t.ToList();
-
-            for (var i = 0; i < t.Count(); i++)
+	        var list = t as IList<T> ?? t.ToList();
+			for (var i = 0; i < list.Count; i++)
             {
                 yield return new PaginableItem<T>(list[i], offset + 1);
                 offset++;

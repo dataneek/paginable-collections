@@ -25,14 +25,15 @@
             if (itemCountPerPage < 1)
                 throw new ArgumentOutOfRangeException(nameof(itemCountPerPage));
 
-            if (subset.Count() > totalItemCount)
+	        var list = subset as IList<T> ?? subset.ToList();
+	        if (list.Count > totalItemCount)
                 throw new ArgumentOutOfRangeException(nameof(totalItemCount));
 
             TotalItemCount = totalItemCount;
             PageNumber = pageNumber;
             ItemCountPerPage = itemCountPerPage;
 
-            innerList.AddRange(subset.ToPaginableItemList(pageNumber, itemCountPerPage));
+            innerList.AddRange(list.ToPaginableItemList(pageNumber, itemCountPerPage));
 
             if (innerList.Any())
             {
