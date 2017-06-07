@@ -28,21 +28,21 @@
             if (subset.Count() > totalItemCount)
                 throw new ArgumentOutOfRangeException(nameof(totalItemCount));
 
-            this.TotalItemCount = totalItemCount;
-            this.PageNumber = pageNumber;
-            this.ItemCountPerPage = itemCountPerPage;
+            TotalItemCount = totalItemCount;
+            PageNumber = pageNumber;
+            ItemCountPerPage = itemCountPerPage;
 
-            this.innerList.AddRange(subset.ToPaginableItemList(pageNumber, itemCountPerPage));
+            innerList.AddRange(subset.ToPaginableItemList(pageNumber, itemCountPerPage));
 
             if (innerList.Any())
             {
-                this.FirstItemNumber = innerList.First().ItemNumber;
-                this.LastItemNumber = innerList.Last().ItemNumber;
+                FirstItemNumber = innerList.First().ItemNumber;
+                LastItemNumber = innerList.Last().ItemNumber;
             }
             else
             {
-                this.FirstItemNumber = 0;
-                this.LastItemNumber = 0;
+                FirstItemNumber = 0;
+                LastItemNumber = 0;
             }
         }
     }

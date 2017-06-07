@@ -4,8 +4,8 @@
     {
         public PaginableRequest(int pageNumber, int itemCountPerPage)
         {
-            this.PageNumber = pageNumber;
-            this.ItemCountPerPage = itemCountPerPage;
+            PageNumber = pageNumber;
+            ItemCountPerPage = itemCountPerPage;
         }
 
         public int PageNumber { get; private set; }

@@ -6,8 +6,8 @@
 
         public PaginableItem(T item, int itemNumber)
         {
-            this.Item = item;
-            this.ItemNumber = itemNumber;
+            Item = item;
+            ItemNumber = itemNumber;
         }
 
         public T Item { get; private set; }
