@@ -22,17 +22,19 @@
                 throw new ArgumentOutOfRangeException(nameof(pageNumber));
 
             if (itemCountPerPage < 1)
-                throw new ArgumentOutOfRangeException(nameof(ItemCountPerPage));
+                throw new ArgumentOutOfRangeException(nameof(itemCountPerPage));
 
-            this.TotalItemCount = queryable == null ? 0 : queryable.Count();
+            this.TotalItemCount = queryable?.Count() ?? 0;
             this.PageNumber = pageNumber;
             this.ItemCountPerPage = itemCountPerPage;
 
-            if (queryable != null && TotalItemCount > 0)
-                innerList.AddRange(
-                    pageNumber == 1
-                        ? queryable.Skip(0).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage)
-                        : queryable.Skip((pageNumber - 1) * ItemCountPerPage).Take(ItemCountPerPage).ToPaginableItemList(pageNumber, itemCountPerPage));
+            if (TotalItemCount > 0)
+            {
+                innerList.AddRange(queryable
+                    .Skip((pageNumber - 1) * ItemCountPerPage)
+                    .Take(ItemCountPerPage)
+                    .ToPaginableItemList(pageNumber, itemCountPerPage));
+            }
 
             if (innerList.Any())
             {
