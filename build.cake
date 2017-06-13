@@ -1,29 +1,11 @@
-#addin nuget:?package=Cake.Incubator
-#addin nuget:?package=Cake.AppVeyor
-
-
-
-var target = Argument("Target", "Default");
-
-var configuration =
-    HasArgument("Configuration") ? Argument<string>("Configuration") : 
-	HasEnvironmentVariable("Configuration") ? EnvironmentVariable<string>("Configuration") : "Release";
-
-var buildNumber =
-    HasArgument("BuildNumber") ? Argument<int>("BuildNumber") :
-    AppVeyor.IsRunningOnAppVeyor ? AppVeyor.Environment.Build.Number :
-    HasEnvironmentVariable("BuildNumber") ? EnvironmentVariable<int>("BuildNumber") : 0;
-
-
-Information(string.Format("Configuration: {0}", configuration));
-Information(string.Format("Build Number: {0}", buildNumber));
-
-var artifactsDirectory = Directory("./artifacts");
+var target = Argument("target", "Default");
+var configuration = Argument("configuration", "Release");
+var buildDirectory = Directory("./artifacts");
 
 Task("Clean")
     .Does(() =>
     {
-        CleanDirectory(artifactsDirectory);
+        CleanDirectory(buildDirectory);
     });
 
 Task("Restore")
@@ -37,7 +19,7 @@ Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
     {
-        var projects = GetFiles("./**/*.csproj");
+        var projects = GetFiles("./src/**/*.csproj");
         foreach(var project in projects)
         {
             DotNetCoreBuild(
@@ -78,7 +60,7 @@ Task("Pack")
                 new DotNetCorePackSettings()
                 {
                     Configuration = configuration,
-                    OutputDirectory = artifactsDirectory,
+                    OutputDirectory = buildDirectory,
                 });
         }
     });
