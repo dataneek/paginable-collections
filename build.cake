@@ -19,7 +19,7 @@ Task("Build")
     .IsDependentOn("Restore")
     .Does(() =>
     {
-        var projects = GetFiles("./src/**/*.csproj");
+        var projects = GetFiles("./**/*.csproj");
         foreach(var project in projects)
         {
             DotNetCoreBuild(
