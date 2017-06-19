@@ -228,3 +228,9 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# VSCode
+.dotnet/
+
+tools/*
+!tools/packages.config
