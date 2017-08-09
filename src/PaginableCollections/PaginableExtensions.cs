@@ -26,9 +26,9 @@
         /// <param name="queryable"></param>
         /// <param name="paginableInfo"></param>
         /// <returns></returns>
-        public static IPaginable<T> ToPaginable<T>(this IQueryable<T> queryable, IPaginableRequest paginableInfo)
+        public static IPaginable<T> ToPaginable<T>(this IQueryable<T> queryable, IPaginableRequest paginableRequest)
         {
-            return queryable.ToPaginable(paginableInfo.PageNumber, paginableInfo.ItemCountPerPage);
+            return queryable.ToPaginable(paginableRequest.PageNumber, paginableRequest.ItemCountPerPage);
         }
 
         /// <summary>
