@@ -24,10 +24,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
-    <PackageReference Include="System.Linq.Queryable" Version="4.0.1" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
   </ItemGroup>
