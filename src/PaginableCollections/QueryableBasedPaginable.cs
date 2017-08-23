@@ -24,9 +24,9 @@
             if (itemCountPerPage < 1)
                 throw new ArgumentOutOfRangeException(nameof(ItemCountPerPage));
 
-            this.TotalItemCount = queryable == null ? 0 : queryable.Count();
-            this.PageNumber = pageNumber;
-            this.ItemCountPerPage = itemCountPerPage;
+            TotalItemCount = queryable == null ? 0 : queryable.Count();
+            PageNumber = pageNumber;
+            ItemCountPerPage = itemCountPerPage;
 
             if (queryable != null && TotalItemCount > 0)
                 innerList.AddRange(
@@ -36,13 +36,13 @@
 
             if (innerList.Any())
             {
-                this.FirstItemNumber = innerList.First().ItemNumber;
-                this.LastItemNumber = innerList.Last().ItemNumber;
+                FirstItemNumber = innerList.First().ItemNumber;
+                LastItemNumber = innerList.Last().ItemNumber;
             }
             else
             {
-                this.FirstItemNumber = 0;
-                this.LastItemNumber = 0;
+                FirstItemNumber = 0;
+                LastItemNumber = 0;
             }
         }
 

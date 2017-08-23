@@ -1,7 +1,6 @@
 namespace PaginableCollections
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     public class StaticPager : IPager
     {
@@ -10,8 +9,8 @@ namespace PaginableCollections
         public StaticPager(IPaginable paginable, int maximumPageNumberCount)
         {
 
-            this.MaximumPageNumberCount = maximumPageNumberCount;
-            this.TotalPageCount = paginable.TotalPageCount;
+            MaximumPageNumberCount = maximumPageNumberCount;
+            TotalPageCount = paginable.TotalPageCount;
 
             var firstPageToDisplay = 1;
             var lastPageToDisplay = paginable.TotalPageCount;
