@@ -1,6 +1,5 @@
 ﻿namespace PaginableCollections
 {
-    using System;
     using System.Linq;
 
     /// <summary>

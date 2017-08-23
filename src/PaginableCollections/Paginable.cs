@@ -3,7 +3,6 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Base class represents page of items.
@@ -58,7 +57,7 @@
         /// Total number of pages.
         /// </summary>
         public int TotalPageCount =>
-            TotalItemCount > 0 ? (int)Math.Ceiling(TotalItemCount / (double)this.ItemCountPerPage) : 0;
+            TotalItemCount > 0 ? (int)Math.Ceiling(TotalItemCount / (double)ItemCountPerPage) : 0;
 
         /// <summary>
         /// Identifies the first page.
