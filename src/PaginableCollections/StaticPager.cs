@@ -8,7 +8,6 @@ namespace PaginableCollections
 
         public StaticPager(IPaginable paginable, int maximumPageNumberCount)
         {
-
             MaximumPageNumberCount = maximumPageNumberCount;
             TotalPageCount = paginable.TotalPageCount;
 
@@ -19,7 +18,7 @@ namespace PaginableCollections
             if (paginable.TotalPageCount > maximumPageNumberCount)
             {
                 var maxPageNumbersToDisplay = maximumPageNumberCount;
-                firstPageToDisplay = paginable.PageNumber - maxPageNumbersToDisplay / 2;
+                firstPageToDisplay = (paginable.PageNumber - maxPageNumbersToDisplay) / 2;
                 if (firstPageToDisplay < 1)
                 {
                     firstPageToDisplay = 1;

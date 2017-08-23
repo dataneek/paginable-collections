@@ -2,6 +2,9 @@ image: Visual Studio 2017
 version: '{build}'  
 pull_requests:  
   do_not_increment_build_number: true
+environment:
+  coveralls_repo_token:
+    secure: poqqXCqljn7A5vFdzA3l7d7zTLB9F54NsdCuc2VW4yX/HQMNvP9WOzTTcc2S2Dgq
 branches:  
   only:
   - master
