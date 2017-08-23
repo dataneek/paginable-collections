@@ -8,6 +8,10 @@ PaginableCollections
 
 A light weight pagination framework for .NET and .NET Core.
 
+[![something](https://img.shields.io/badge/.NET-4.5-blue.svg)](https://img.shields.io/badge/.NET-4.5-blue.svg)
+[![something](https://img.shields.io/badge/.netstandard-1.3-blue.svg)](https://img.shields.io/badge/.netstandard-1.3-blue.svg)
+[![something](https://img.shields.io/badge/.netstandard-2.0-blue.svg)](https://img.shields.io/badge/.netstandard-1.3-blue.svg)
+
 ### Installing PaginableCollections
 
 You should install [PaginableCollections with NuGet](https://www.nuget.org/packages/paginablecollections):
