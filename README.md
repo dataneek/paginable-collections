@@ -3,8 +3,14 @@ PaginableCollections
 
 [![Build status](https://ci.appveyor.com/api/projects/status/8hedo7ja62gaq022?svg=true)](https://ci.appveyor.com/project/neekgreen/paginablecollections)
 [![NuGet](https://img.shields.io/nuget/v/paginablecollections.svg)](https://www.nuget.org/packages/paginablecollections) 
+[![NuGet](https://img.shields.io/nuget/dt/paginablecollections.svg)](https://www.nuget.org/packages/paginablecollections) 
+[![CodeFactor](https://www.codefactor.io/repository/github/neekgreen/paginablecollections/badge)](https://www.codefactor.io/repository/github/neekgreen/paginablecollections)
 
 A light weight pagination framework for .NET and .NET Core.
+
+[![something](https://img.shields.io/badge/.NET-4.5-blue.svg)](https://img.shields.io/badge/.NET-4.5-blue.svg)
+[![something](https://img.shields.io/badge/.netstandard-1.3-blue.svg)](https://img.shields.io/badge/.netstandard-1.3-blue.svg)
+[![something](https://img.shields.io/badge/.netstandard-2.0-blue.svg)](https://img.shields.io/badge/.netstandard-1.3-blue.svg)
 
 ### Installing PaginableCollections
 

@@ -1,6 +1,5 @@
 ﻿namespace PaginableCollections
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -26,9 +25,9 @@
         /// <param name="queryable"></param>
         /// <param name="paginableInfo"></param>
         /// <returns></returns>
-        public static IPaginable<T> ToPaginable<T>(this IQueryable<T> queryable, IPaginableRequest paginableInfo)
+        public static IPaginable<T> ToPaginable<T>(this IQueryable<T> queryable, IPaginableRequest paginableRequest)
         {
-            return queryable.ToPaginable(paginableInfo.PageNumber, paginableInfo.ItemCountPerPage);
+            return queryable.ToPaginable(paginableRequest.PageNumber, paginableRequest.ItemCountPerPage);
         }
 
         /// <summary>
@@ -53,9 +52,8 @@
         internal static IEnumerable<IPaginableItem<T>> ToPaginableItemList<T>(this IEnumerable<T> t, int pageNumber, int itemCountPerPage)
         {
             var offset = (pageNumber - 1) * itemCountPerPage;
-            var list = t.ToList();
-
-            for (var i = 0; i < t.Count(); i++)
+            var list = t as IList<T> ?? t.ToList();
+            for (var i = 0; i < list.Count; i++)
             {
                 yield return new PaginableItem<T>(list[i], offset + 1);
                 offset++;

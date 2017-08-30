@@ -4,8 +4,8 @@ namespace PaginableCollections
     {
         public PagerItem(int pageNumber, int totalPageCount)
         {
-            this.PageNumber = pageNumber;
-            this.TotalPageCount = totalPageCount;
+            PageNumber = pageNumber;
+            TotalPageCount = totalPageCount;
         }
 
         public int PageNumber { get; private set; }
