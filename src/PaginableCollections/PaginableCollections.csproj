@@ -12,6 +12,7 @@
     <PackageProjectUrl>https://github.com/neekgreen/PaginableCollections</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/neekgreen/paginablecollections</RepositoryUrl>
+    <Version>3.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
