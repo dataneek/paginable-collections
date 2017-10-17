@@ -49,6 +49,8 @@
 
             sut.ItemNumber.ShouldBeEquivalentTo(21);
             sut.Item.ShouldBeEquivalentTo(1);
+            sut.PageNumber.ShouldBeEquivalentTo(3);
+            sut.ItemCountPerPage.ShouldBeEquivalentTo(10);
         }
     }
 }

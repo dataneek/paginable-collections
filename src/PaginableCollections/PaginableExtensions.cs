@@ -55,7 +55,7 @@
             var list = t as IList<T> ?? t.ToList();
             for (var i = 0; i < list.Count; i++)
             {
-                yield return new PaginableItem<T>(list[i], offset + 1);
+                yield return new PaginableItem<T>(list[i], offset + 1, pageNumber, itemCountPerPage);
                 offset++;
             }
         }
