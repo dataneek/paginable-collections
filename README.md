@@ -4,7 +4,7 @@ PaginableCollections
 [![Build status](https://ci.appveyor.com/api/projects/status/8hedo7ja62gaq022?svg=true)](https://ci.appveyor.com/project/neekgreen/paginablecollections)
 [![NuGet](https://img.shields.io/nuget/v/paginablecollections.svg)](https://www.nuget.org/packages/paginablecollections) 
 [![NuGet](https://img.shields.io/nuget/dt/paginablecollections.svg)](https://www.nuget.org/packages/paginablecollections) 
-[![CodeFactor](https://www.codefactor.io/repository/github/neekgreen/paginablecollections/badge)](https://www.codefactor.io/repository/github/neekgreen/paginablecollections)
+[![CodeFactor](https://www.codefactor.io/repository/github/neekgreen/paginable-collections/badge)](https://www.codefactor.io/repository/github/neekgreen/paginablecollections)
 
 A light weight pagination framework for .NET and .NET Core.
 
