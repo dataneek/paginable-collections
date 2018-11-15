@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>A light weight pagination framework</Description>
     <Copyright>Copyright Nicholas Myers</Copyright>
-    <VersionPrefix>3.1.0</VersionPrefix>
+    <VersionPrefix>3.3.0</VersionPrefix>
     <Authors>Nicholas Myers</Authors>
     <TargetFrameworks>net45;netstandard1.3;netstandard2.0</TargetFrameworks>
     <AssemblyName>PaginableCollections</AssemblyName>
@@ -11,8 +11,8 @@
     <PackageTags>paginable;page;paging;queryable;collections;paginablecollections</PackageTags>
     <PackageProjectUrl>https://github.com/neekgreen/PaginableCollections</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>git://github.com/neekgreen/paginablecollections</RepositoryUrl>
-    <Version>3.2.0</Version>
+    <RepositoryUrl>git://github.com/neekgreen/paginable-collections</RepositoryUrl>
+    <Version>3.3.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
@@ -26,7 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
   </ItemGroup>
-
 </Project>
